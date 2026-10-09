@@ -31,8 +31,7 @@ No prior Python is assumed.
 
 ## Layout
 
-    notebooks/   one per class meeting
-    psets/       problem sets
+    notebooks/   one per week of the course
     src/         mlfin_data.py, the data helper the notebooks import
 
-Solutions are not published here.
+Problem sets and data are on Brightspace, not here.

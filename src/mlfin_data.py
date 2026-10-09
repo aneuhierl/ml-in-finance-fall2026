@@ -14,7 +14,7 @@ or puts it in a data/ folder on their own laptop. Clumsy, but the files are
 small. Free public sources (yfinance, Ken French, Goyal-Welch) can still be
 fetched from a plain URL through DATA_URLS, which ships empty.
 
-Resolution order (see DESIGN.md section 4):
+Resolution order:
 
     1. a local copy      -- a file uploaded into Colab, or a data/ folder
     2. the download cache -- anything a previous call already fetched
@@ -40,12 +40,12 @@ import pandas as pd
 # Where a file can be downloaded from. Two mechanisms, because the two kinds
 # of link have different shapes:
 #
-#   DATA_URLS     -- a whole URL per file. This is what a Dropbox or Google
-#                    Drive share link looks like: the file name does not
-#                    appear in it, so it cannot be built from a base path.
-#                    Paste the link exactly as the provider gives it, but
-#                    make it a DIRECT download (Dropbox: end it "?dl=1";
-#                    Drive: "https://drive.google.com/uc?export=download&id=<id>").
+#   DATA_URLS     -- a whole URL per file, for a link whose path does not
+#                    contain the file name, so it cannot be built from a
+#                    base path. Paste it exactly, as a DIRECT download.
+#
+#   Only free public sources belong here. Course data reaches students
+#   through Brightspace and is never behind a public link.
 #
 #   DATA_URL_BASE -- a folder whose files are addressed as base + "/" + name.
 #                    Use this only when the files really do sit under one
@@ -54,7 +54,6 @@ import pandas as pd
 # DATA_URLS wins when a file appears in both. Either may be left empty.
 # ---------------------------------------------------------------------------
 DATA_URLS: dict[str, str] = {
-    # "returns.csv": "https://www.dropbox.com/scl/fi/.../returns.csv?rlkey=...&dl=1",
 }
 
 DATA_URL_BASE = ""
@@ -70,7 +69,7 @@ DEFAULT_SEARCH_ROOTS: list[Path] = [
     # Colab, file dragged into the Files pane (folder icon) -- it lands in
     # /content, the session's working folder. This is the Brightspace route.
     Path("/content"),
-    # A local clone of the public repo.
+    # A laptop: the Brightspace files saved in a data/ folder.
     Path("data"),
     Path(__file__).resolve().parent.parent / "data",
     # Anything a previous call already downloaded.
