@@ -32,6 +32,7 @@ No prior Python is assumed.
 ## Layout
 
     notebooks/   one per week of the course
+    tutorials/   the notebooks of the recorded Python tutorials
     src/         mlfin_data.py, the data helper the notebooks import
 
 Problem sets and data are on Brightspace, not here.
