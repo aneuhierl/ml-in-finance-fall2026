@@ -72,6 +72,9 @@ DEFAULT_SEARCH_ROOTS: list[Path] = [
     # A laptop: the Brightspace files saved in a data/ folder.
     Path("data"),
     Path(__file__).resolve().parent.parent / "data",
+    # A laptop: the final project's files, kept in data/final_project/.
+    Path("data") / "final_project",
+    Path(__file__).resolve().parent.parent / "data" / "final_project",
     # Anything a previous call already downloaded.
     DOWNLOAD_CACHE,
 ]
